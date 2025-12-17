@@ -1,0 +1,3 @@
+{"audio_filepath": "data\\clean\\SP001_15-25_m_other_001.wav", "text": "SALOM AHVOLLAR QALAY", "speaker_id": "SP001", "age_group": "15-25", "gender": "m", "dialect": "other", "timestamp": "20251217_222655"}
+{"audio_filepath": "data\\clean\\SP23213_15-25_m_other_001.wav", "text": "N", "speaker_id": "SP23213", "age_group": "15-25", "gender": "m", "dialect": "other", "timestamp": "20251217_222942"}
+{"audio_filepath": "data\\noisy\\SP003_15-25_m_fergana_001.wav", "text": "SALOM", "speaker_id": "SP003", "age_group": "15-25", "gender": "m", "dialect": "fergana", "audio_type": "noisy", "timestamp": "20251217_224242"}

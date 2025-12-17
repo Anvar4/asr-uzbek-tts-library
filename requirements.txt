@@ -1,0 +1,94 @@
+# Python ASR Dissertatsiya uchun kerakli kutubxonalar
+
+# ============================================
+# AUDIO PROCESSING
+# ============================================
+librosa>=0.10.0           # Audio analiz va feature extraction
+soundfile>=0.12.1         # Audio fayl o'qish/yozish
+pydub>=0.25.1            # Audio manipulation
+webrtcvad>=2.0.10        # Voice Activity Detection
+audioread>=3.0.0         # Audio format support
+
+# ============================================
+# DEEP LEARNING FRAMEWORKS
+# ============================================
+torch>=2.0.0             # PyTorch (asosiy framework)
+torchaudio>=2.0.0        # Audio uchun PyTorch
+tensorflow>=2.13.0       # TensorFlow (alternativ)
+transformers>=4.35.0     # Hugging Face (Whisper, Wav2Vec2)
+datasets>=2.14.0         # Hugging Face datasets
+accelerate>=0.24.0       # Training optimization
+
+# ============================================
+# ASR SPECIFIC
+# ============================================
+speechbrain>=0.5.16      # SpeechBrain toolkit
+ctcdecode>=0.4           # CTC decoder
+jiwer>=3.0.0             # WER/CER hisoblash
+python-speech-features>=0.6  # MFCC extraction
+
+# ============================================
+# DATA SCIENCE & ML
+# ============================================
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+
+# ============================================
+# VISUALIZATION
+# ============================================
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+tensorboard>=2.13.0      # Training monitoring
+
+# ============================================
+# WEB APPLICATION (Real-time ASR)
+# ============================================
+fastapi>=0.104.0         # Web API
+uvicorn>=0.24.0          # ASGI server
+streamlit>=1.28.0        # Interactive web app
+gradio>=4.0.0            # ML demo interface
+websockets>=12.0         # Real-time communication
+
+# ============================================
+# UTILITIES
+# ============================================
+tqdm>=4.66.0             # Progress bar
+pyyaml>=6.0.1            # Config files
+python-dotenv>=1.0.0     # Environment variables
+requests>=2.31.0         # HTTP requests
+
+# ============================================
+# JUPYTER & NOTEBOOKS
+# ============================================
+jupyter>=1.0.0
+notebook>=7.0.0
+ipywidgets>=8.1.0
+
+# ============================================
+# MODEL OPTIMIZATION (BONUS)
+# ============================================
+onnx>=1.15.0             # Model export
+onnxruntime>=1.16.0      # ONNX inference
+openvino>=2023.0.0       # Intel optimization
+
+# ============================================
+# TESTING & QUALITY
+# ============================================
+pytest>=7.4.0
+black>=23.0.0            # Code formatter
+flake8>=6.1.0            # Linter
+
+# ============================================
+# CLOUD & STORAGE (optional)
+# ============================================
+# google-cloud-storage   # Google Cloud
+# boto3                  # AWS S3
+# azure-storage-blob     # Azure Blob
+
+# ============================================
+# O'RNATISH UCHUN BUYRUQ:
+# pip install -r requirements.txt
+# ============================================

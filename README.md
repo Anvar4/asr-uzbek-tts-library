@@ -1,7 +1,5 @@
 # O'zbek Tili Uchun Avtomatik Nutqni Tanish (ASR) Tizimi
 
-## Magistrlik Dissertatsiyasi
-
 ### 📂 Loyiha Strukturasi
 
 ```

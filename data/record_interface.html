@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>🎤 O'zbek Nutq Yig'ish</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			background-attachment: fixed;
+			min-height: 100vh;
+			padding: 15px;
+			overflow-x: hidden;
+		}
+
+		.container {
+			background: white;
+			border-radius: 24px;
+			padding: 24px;
+			max-width: 680px;
+			width: 100%;
+			margin: 0 auto;
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+			animation: fadeInUp 0.5s ease;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		h1 {
+			text-align: center;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			margin-bottom: 8px;
+			font-size: clamp(1.5rem, 5vw, 2rem);
+			font-weight: 700;
+		}
+
+		.subtitle {
+			text-align: center;
+			color: #64748b;
+			margin-bottom: 24px;
+			font-size: clamp(0.875rem, 2vw, 1rem);
+		}
+
+		.stats {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+			gap: 12px;
+			margin-bottom: 24px;
+		}
+
+		.stat-box {
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			padding: 16px 12px;
+			border-radius: 16px;
+			text-align: center;
+			border: 2px solid #e2e8f0;
+			transition: all 0.3s ease;
+		}
+
+		.stat-box:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+			border-color: #667eea;
+		}
+
+		.stat-box h3 {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			font-size: clamp(1.25rem, 4vw, 1.75rem);
+			margin-bottom: 4px;
+			font-weight: 700;
+		}
+
+		.stat-box p {
+			color: #64748b;
+			font-size: clamp(0.75rem, 2vw, 0.875rem);
+			font-weight: 500;
+		}
+
+		.recording-section {
+			background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			padding: 32px 20px;
+			border-radius: 20px;
+			margin-bottom: 24px;
+			border: 2px solid #e2e8f0;
+		}
+
+		.mic-button {
+			width: clamp(100px, 25vw, 140px);
+			height: clamp(100px, 25vw, 140px);
+			border-radius: 50%;
+			border: none;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-size: clamp(2.5rem, 8vw, 4rem);
+			cursor: pointer;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 20px;
+			position: relative;
+			box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+		}
+
+		.mic-button:hover {
+			transform: scale(1.05);
+			box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
+		}
+
+		.mic-button:active {
+			transform: scale(0.98);
+		}
+
+		.mic-button.recording {
+			background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+			animation: pulse 1.5s infinite, rotate 3s linear infinite;
+		}
+
+		@keyframes pulse {
+			0%, 100% {
+				transform: scale(1);
+				box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
+			}
+			50% {
+				transform: scale(1.1);
+				box-shadow: 0 12px 32px rgba(239, 68, 68, 0.6);
+			}
+		}
+
+		@keyframes rotate {
+			0% { filter: hue-rotate(0deg); }
+			100% { filter: hue-rotate(360deg); }
+		}
+
+		.timer {
+			text-align: center;
+			font-size: clamp(1.5rem, 5vw, 2.5rem);
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			margin-bottom: 16px;
+			font-weight: 700;
+			letter-spacing: 0.05em;
+		}
+
+		.status {
+			text-align: center;
+			font-size: clamp(1rem, 3vw, 1.25rem);
+			color: #475569;
+			margin-bottom: 20px;
+			font-weight: 500;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		.form-group label {
+			display: block;
+			margin-bottom: 10px;
+			color: #1e293b;
+			font-weight: 600;
+			font-size: clamp(0.875rem, 2vw, 1rem);
+		}
+
+		.form-group input,
+		.form-group select,
+		.form-group textarea {
+			width: 100%;
+			padding: 14px 16px;
+			border: 2px solid #e2e8f0;
+			border-radius: 12px;
+			font-size: clamp(0.875rem, 2vw, 1rem);
+			font-family: inherit;
+			transition: all 0.3s ease;
+			background: white;
+		}
+
+		.form-group input:focus,
+		.form-group select:focus,
+		.form-group textarea:focus {
+			outline: none;
+			border-color: #667eea;
+			box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+		}
+
+		.form-group textarea {
+			resize: vertical;
+			min-height: 80px;
+			font-family: inherit;
+		}
+
+		.button-group {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+			gap: 12px;
+			margin-top: 24px;
+		}
+
+		.btn {
+			padding: 16px 24px;
+			border: none;
+			border-radius: 12px;
+			font-size: clamp(0.875rem, 2vw, 1rem);
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			font-family: inherit;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+		}
+
+		.btn-primary:hover:not(:disabled) {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+		}
+
+		.btn-primary:active:not(:disabled) {
+			transform: translateY(0);
+		}
+
+		.btn-secondary {
+			background: white;
+			color: #475569;
+			border: 2px solid #e2e8f0;
+		}
+
+		.btn-secondary:hover:not(:disabled) {
+			background: #f8fafc;
+			border-color: #cbd5e1;
+			transform: translateY(-2px);
+		}
+
+		.btn:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+			transform: none !important;
+		}
+
+		.audio-player {
+			width: 100%;
+			margin-top: 16px;
+			border-radius: 12px;
+			outline: none;
+		}
+
+		.alert {
+			padding: 16px 20px;
+			border-radius: 12px;
+			margin-bottom: 20px;
+			display: none;
+			font-weight: 500;
+			animation: slideDown 0.3s ease;
+		}
+
+		@keyframes slideDown {
+			from {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.alert.success {
+			background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+			color: #065f46;
+			border: 2px solid #6ee7b7;
+		}
+
+		.alert.error {
+			background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+			color: #991b1b;
+			border: 2px solid #fca5a5;
+		}
+
+		.alert.show {
+			display: block;
+		}
+
+		.instructions {
+			background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+			padding: 20px;
+			border-radius: 16px;
+			margin-bottom: 24px;
+			border: 2px solid #fbbf24;
+		}
+
+		.instructions h3 {
+			color: #92400e;
+			margin-bottom: 12px;
+			font-size: clamp(1rem, 3vw, 1.125rem);
+			font-weight: 600;
+		}
+
+		.instructions ul {
+			margin-left: 20px;
+		}
+
+		.instructions li {
+			color: #78350f;
+			margin-bottom: 8px;
+			font-size: clamp(0.875rem, 2vw, 0.9375rem);
+			line-height: 1.6;
+		}
+
+		/* Mobile optimizations */
+		@media (max-width: 640px) {
+			.container {
+				padding: 20px;
+				border-radius: 20px;
+			}
+			
+			.recording-section {
+				padding: 24px 16px;
+			}
+			
+			.stats {
+				gap: 8px;
+			}
+			
+			.stat-box {
+				padding: 12px 8px;
+			}
+			
+			.button-group {
+				grid-template-columns: 1fr;
+			}
+			
+			.btn {
+				padding: 14px 20px;
+			}
+		}
+
+		/* Desktop improvements */
+		@media (min-width: 1024px) {
+			.container {
+				padding: 48px;
+			}
+			
+			body {
+				padding: 40px 20px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>🎤 O'zbek Nutq Dataset</h1>
+		<p class="subtitle">Audio yozish va transkript qilish tizimi</p>
+
+		<div class="stats">
+			<div class="stat-box">
+				<h3 id="totalRecordings">0</h3>
+				<p>Yozilgan</p>
+			</div>
+			<div class="stat-box">
+				<h3 id="totalDuration">0:00</h3>
+				<p>Umumiy vaqt</p>
+			</div>
+			<div class="stat-box">
+				<h3 id="sessionRecordings">0</h3>
+				<p>Bu sessiyada</p>
+			</div>
+		</div>
+
+		<div class="instructions">
+			<h3>Yo'riqnoma:</h3>
+			<ul>
+				<li>Mikrofon tugmasini bosing va gapiring (3-10 soniya)</li>
+				<li>Eshitib ko'ring va nima deganingizni yozing</li>
+				<li>Ma'lumotlaringizni kiriting va saqlang</li>
+				<li>Keyingi yozuvga o'ting!</li>
+			</ul>
+		</div>
+
+		<div class="alert" id="alertBox"></div>
+
+		<div class="recording-section">
+			<button class="mic-button" id="micButton">
+				🎤
+			</button>
+			<div class="timer" id="timer">00:00</div>
+			<div class="status" id="status">Mikrofon tugmasini bosing</div>
+
+			<audio id="audioPlayer" class="audio-player" controls style="display: none;"></audio>
+		</div>
+
+		<form id="recordingForm">
+			<div class="form-group">
+				<label for="transcript">Transkript (nima dedingiz):</label>
+				<textarea id="transcript" required placeholder="Masalan: Salom, mening ismim Anvar"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="speakerId">Spiker ID:</label>
+				<input type="text" id="speakerId" required placeholder="Masalan: sp001">
+			</div>
+
+			<div class="form-group">
+				<label for="ageGroup">Yosh guruhi:</label>
+				<select id="ageGroup" required>
+					<option value="">Tanlang...</option>
+					<option value="15-25">15-25</option>
+					<option value="26-35">26-35</option>
+					<option value="36-45">36-45</option>
+					<option value="46-55">46-55</option>
+					<option value="56+">56+</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="gender">Jins:</label>
+				<select id="gender" required>
+					<option value="">Tanlang...</option>
+					<option value="m">Erkak</option>
+					<option value="f">Ayol</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="dialect">Lahja:</label>
+				<select id="dialect" required>
+					<option value="">Tanlang...</option>
+					<option value="tashkent">Toshkent</option>
+					<option value="fergana">Farg'ona</option>
+					<option value="khorezm">Xorazm</option>
+					<option value="samarkand">Samarqand</option>
+					<option value="other">Boshqa</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label style="display: flex; align-items: center; cursor: pointer;">
+					<input type="checkbox" id="isNoisy" style="margin-right: 10px; width: 20px; height: 20px; cursor: pointer;">
+					Shovqinli audio (ko'chada, oshxonada, shovqin bilan)
+				</label>
+			</div>
+
+			<div class="button-group">
+				<button type="button" class="btn btn-secondary" id="resetButton">🔄 Qaytadan yozish</button>
+				<button type="submit" class="btn btn-primary" id="saveButton" disabled>Saqlash</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		let mediaRecorder;
+		let audioChunks = [];
+		let recordingStartTime;
+		let timerInterval;
+		let currentAudioBlob = null;
+		let sessionCount = 0;
+		let totalDuration = 0;
+
+		const micButton = document.getElementById('micButton');
+		const timer = document.getElementById('timer');
+		const status = document.getElementById('status');
+		const audioPlayer = document.getElementById('audioPlayer');
+		const saveButton = document.getElementById('saveButton');
+		const resetButton = document.getElementById('resetButton');
+		const recordingForm = document.getElementById('recordingForm');
+		const alertBox = document.getElementById('alertBox');
+
+		// Load statistics from localStorage
+		function loadStats() {
+			const stats = JSON.parse(localStorage.getItem('recordingStats') || '{"total": 0, "duration": 0}');
+			document.getElementById('totalRecordings').textContent = stats.total;
+			document.getElementById('totalDuration').textContent = formatTime(stats.duration);
+		}
+
+		// Mikrofon ruxsatini so'rash
+		async function initMicrophone() {
+			try {
+				const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+				mediaRecorder = new MediaRecorder(stream);
+
+				mediaRecorder.ondataavailable = (event) => {
+					audioChunks.push(event.data);
+				};
+
+				mediaRecorder.onstop = () => {
+					currentAudioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+					const audioUrl = URL.createObjectURL(currentAudioBlob);
+					audioPlayer.src = audioUrl;
+					audioPlayer.style.display = 'block';
+					saveButton.disabled = false;
+					status.textContent = '✅ Yozuv tugadi! Eshitib ko\'ring va ma\'lumotlarni kiriting';
+				};
+
+				showAlert('✅ Mikrofon tayyor!', 'success');
+			} catch (error) {
+				showAlert('❌ Mikrofon ruxsatini bering!', 'error');
+			}
+		}
+
+		// Yozishni boshlash/to'xtatish
+		micButton.addEventListener('click', () => {
+			if (!mediaRecorder) {
+				initMicrophone();
+				return;
+			}
+
+			if (mediaRecorder.state === 'recording') {
+				// To'xtatish
+				mediaRecorder.stop();
+				micButton.classList.remove('recording');
+				micButton.textContent = '🎤';
+				clearInterval(timerInterval);
+			} else {
+				// Boshlash
+				audioChunks = [];
+				currentAudioBlob = null;
+				audioPlayer.style.display = 'none';
+				saveButton.disabled = true;
+
+				mediaRecorder.start();
+				micButton.classList.add('recording');
+				micButton.textContent = '⏹️';
+
+				recordingStartTime = Date.now();
+				timerInterval = setInterval(updateTimer, 100);
+				status.textContent = '🔴 Yozilmoqda... Gapiring!';
+			}
+		});
+
+		// Timer yangilash
+		function updateTimer() {
+			const elapsed = Date.now() - recordingStartTime;
+			timer.textContent = formatTime(elapsed / 1000);
+		}
+
+		// Vaqtni formatlash
+		function formatTime(seconds) {
+			const mins = Math.floor(seconds / 60);
+			const secs = Math.floor(seconds % 60);
+			return `${mins}:${secs.toString().padStart(2, '0')}`;
+		}
+
+		// Qaytadan yozish
+		resetButton.addEventListener('click', () => {
+			audioChunks = [];
+			currentAudioBlob = null;
+			audioPlayer.style.display = 'none';
+			saveButton.disabled = true;
+			timer.textContent = '00:00';
+			status.textContent = 'Mikrofon tugmasini bosing';
+			recordingForm.reset();
+		});
+
+		// Saqlash
+		recordingForm.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			if (!currentAudioBlob) {
+				showAlert('❌ Avval audio yozing!', 'error');
+				return;
+			}
+
+			const formData = new FormData();
+			formData.append('audio', currentAudioBlob, 'recording.wav');
+			formData.append('transcript', document.getElementById('transcript').value);
+			formData.append('speaker_id', document.getElementById('speakerId').value);
+			formData.append('age_group', document.getElementById('ageGroup').value);
+			formData.append('gender', document.getElementById('gender').value);
+			formData.append('dialect', document.getElementById('dialect').value);
+			formData.append('is_noisy', document.getElementById('isNoisy').checked ? 'true' : 'false');
+
+			try {
+				const response = await fetch('http://localhost:8000/upload', {
+					method: 'POST',
+					body: formData
+				});
+
+				const result = await response.json();
+
+				if (response.ok) {
+					showAlert('✅ Muvaffaqiyatli saqlandi: ' + result.filename, 'success');
+
+					// Update statistics
+					sessionCount++;
+					const duration = audioPlayer.duration || 0;
+					totalDuration += duration;
+
+					const stats = JSON.parse(localStorage.getItem('recordingStats') || '{"total": 0, "duration": 0}');
+					stats.total++;
+					stats.duration += duration;
+					localStorage.setItem('recordingStats', JSON.stringify(stats));
+
+					loadStats();
+					document.getElementById('sessionRecordings').textContent = sessionCount;
+
+					// Reset form
+					setTimeout(() => {
+						resetButton.click();
+					}, 2000);
+				} else {
+					showAlert('❌ Xato: ' + result.error, 'error');
+				}
+			} catch (error) {
+				showAlert('❌ Server ishlamayapti! Terminal da serverni ishga tushiring: python record_server.py', 'error');
+			}
+		});
+
+		// Alert ko'rsatish
+		function showAlert(message, type) {
+			alertBox.textContent = message;
+			alertBox.className = 'alert ' + type + ' show';
+			setTimeout(() => {
+				alertBox.className = 'alert';
+			}, 5000);
+		}
+
+		// Sahifa yuklanganda
+		loadStats();
+		initMicrophone();
+	</script>
+</body>
+
+</html>
