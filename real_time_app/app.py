@@ -5,12 +5,10 @@ FastAPI yoki Streamlit yordamida real-time nutqni tanish
 
 import streamlit as st
 import torch
-import soundfile as sf
-import numpy as np
-from io import BytesIO
 import tempfile
 import os
 
+# start yani boshlash uchun: python app.py
 
 # ==========================================
 # STREAMLIT VERSION (Oddiy va tez)
@@ -164,7 +162,6 @@ Run: uvicorn real_time_app:app --reload
 
 from fastapi import FastAPI, WebSocket, UploadFile, File
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
 import asyncio
 
 app = FastAPI(title="Uzbek ASR API")

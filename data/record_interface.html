@@ -38,6 +38,7 @@
 				opacity: 0;
 				transform: translateY(30px);
 			}
+
 			to {
 				opacity: 1;
 				transform: translateY(0);
@@ -141,10 +142,13 @@
 		}
 
 		@keyframes pulse {
-			0%, 100% {
+
+			0%,
+			100% {
 				transform: scale(1);
 				box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
 			}
+
 			50% {
 				transform: scale(1.1);
 				box-shadow: 0 12px 32px rgba(239, 68, 68, 0.6);
@@ -152,8 +156,13 @@
 		}
 
 		@keyframes rotate {
-			0% { filter: hue-rotate(0deg); }
-			100% { filter: hue-rotate(360deg); }
+			0% {
+				filter: hue-rotate(0deg);
+			}
+
+			100% {
+				filter: hue-rotate(360deg);
+			}
 		}
 
 		.timer {
@@ -291,6 +300,7 @@
 				opacity: 0;
 				transform: translateY(-10px);
 			}
+
 			to {
 				opacity: 1;
 				transform: translateY(0);
@@ -345,23 +355,23 @@
 				padding: 20px;
 				border-radius: 20px;
 			}
-			
+
 			.recording-section {
 				padding: 24px 16px;
 			}
-			
+
 			.stats {
 				gap: 8px;
 			}
-			
+
 			.stat-box {
 				padding: 12px 8px;
 			}
-			
+
 			.button-group {
 				grid-template-columns: 1fr;
 			}
-			
+
 			.btn {
 				padding: 14px 20px;
 			}
@@ -372,7 +382,7 @@
 			.container {
 				padding: 48px;
 			}
-			
+
 			body {
 				padding: 40px 20px;
 			}
@@ -603,7 +613,7 @@
 			formData.append('is_noisy', document.getElementById('isNoisy').checked ? 'true' : 'false');
 
 			try {
-				const response = await fetch('http://localhost:8000/upload', {
+				const response = await fetch('http://localhost:8001/upload', {
 					method: 'POST',
 					body: formData
 				});

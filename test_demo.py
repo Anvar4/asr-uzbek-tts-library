@@ -3,8 +3,9 @@ ODDIY DEMO - Loyihani test qilish
 Bu faqat model arxitekturasini test qiladi (training emas!)
 """
 
+# start test demon uchun: python test_demo.py
+
 import torch
-import numpy as np
 
 print("="*60)
 print("O'ZBEK ASR LOYIHASI - TEST")
